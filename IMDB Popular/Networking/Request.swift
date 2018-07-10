@@ -1,8 +1,10 @@
 import Alamofire
 import Foundation
 
-private let baseAPI = "https://api.themoviedb.org/3/"
-private let theMobieDbToken = "9606d0f761d04a5129e2a253001f9d18"
+private struct TheMovieDBAPI {
+    static let baseAPI = "https://api.themoviedb.org/3"
+    static let apiKey = "9606d0f761d04a5129e2a253001f9d18"
+}
 
 enum Encoding {
     case string
@@ -25,7 +27,7 @@ struct RequestInputs {
         if let validParams = params {
             self.parameters = validParams
         }
-        self.parameters.updateValue(theMobieDbToken, forKey: "api_key")
+        self.parameters.updateValue(TheMovieDBAPI.apiKey, forKey: "api_key")
         self.path = path
         self.method = method
         self.onSuccess = onSuccess
@@ -40,7 +42,7 @@ struct Request {
 
             return
         }
-        guard let url = URL(string: baseAPI) else {
+        guard let url = URL(string: TheMovieDBAPI.baseAPI) else {
             inputs.onFailure(.undefined)
             
             return

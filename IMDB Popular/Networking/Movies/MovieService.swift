@@ -5,7 +5,7 @@ protocol MoviesProtocol {
     func requestMovieDetails(movie: MovieModel, onSuccess: @escaping (MovieDetailModel) -> Void, onFailure: @escaping (ErrorType) -> Void)
 }
 
-struct Movies: MoviesProtocol {
+struct MovieService: MoviesProtocol {
     
     func requestMovies(page: Int?, onSuccess: @escaping (DetailModel) -> Void, onFailure: @escaping (ErrorType) -> Void) {
         let onRequestSuccess: (Any?) -> Void = { response in

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0146D61ED07D8996774198A6 /* Pods_IMDB_Popular.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838EF50F1481366FADD64A8E /* Pods_IMDB_Popular.framework */; };
 		BC88D8EB20F4D09B00E9E763 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88D8EA20F4D09B00E9E763 /* MovieDetail.swift */; };
+		BC88D8FD20F4D6D900E9E763 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88D8FC20F4D6D800E9E763 /* MovieService.swift */; };
+		BC88D8FF20F4D70300E9E763 /* MovieServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88D8FE20F4D70300E9E763 /* MovieServiceTests.swift */; };
 		BCD3820E20F49343003559C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3820D20F49343003559C4 /* AppDelegate.swift */; };
 		BCD3821020F49343003559C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3820F20F49343003559C4 /* ViewController.swift */; };
 		BCD3821320F49343003559C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD3821120F49343003559C4 /* Main.storyboard */; };
@@ -18,14 +20,27 @@
 		BCD3822520F4998C003559C4 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3822420F4998C003559C4 /* ErrorType.swift */; };
 		BCD3822820F499C4003559C4 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3822620F499C4003559C4 /* Alert.swift */; };
 		BCD3822920F499C4003559C4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3822720F499C4003559C4 /* Utils.swift */; };
-		BCD3822C20F49A2B003559C4 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3822B20F49A2B003559C4 /* Movies.swift */; };
 		BCD3822F20F49A7E003559C4 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3822E20F49A7E003559C4 /* MovieModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BC88D8F520F4D62000E9E763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCD3820220F49343003559C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCD3820920F49343003559C4;
+			remoteInfo = "IMDB Popular";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		838EF50F1481366FADD64A8E /* Pods_IMDB_Popular.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IMDB_Popular.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A476B90EB20073139BFC443B /* Pods-IMDB Popular.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMDB Popular.release.xcconfig"; path = "Pods/Target Support Files/Pods-IMDB Popular/Pods-IMDB Popular.release.xcconfig"; sourceTree = "<group>"; };
 		BC88D8EA20F4D09B00E9E763 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		BC88D8F020F4D62000E9E763 /* IMDB PopularTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IMDB PopularTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC88D8F420F4D62000E9E763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC88D8FC20F4D6D800E9E763 /* MovieService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
+		BC88D8FE20F4D70300E9E763 /* MovieServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieServiceTests.swift; sourceTree = "<group>"; };
 		BCD3820A20F49343003559C4 /* IMDB Popular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IMDB Popular.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD3820D20F49343003559C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCD3820F20F49343003559C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,12 +52,18 @@
 		BCD3822420F4998C003559C4 /* ErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		BCD3822620F499C4003559C4 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		BCD3822720F499C4003559C4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		BCD3822B20F49A2B003559C4 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		BCD3822E20F49A7E003559C4 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		C689F244E6120C16DEE70B23 /* Pods-IMDB Popular.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMDB Popular.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IMDB Popular/Pods-IMDB Popular.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BC88D8ED20F4D62000E9E763 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCD3820720F49343003559C4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,10 +92,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BC88D8F120F4D62000E9E763 /* IMDB PopularTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC88D8F420F4D62000E9E763 /* Info.plist */,
+				BC88D8FE20F4D70300E9E763 /* MovieServiceTests.swift */,
+			);
+			path = "IMDB PopularTests";
+			sourceTree = "<group>";
+		};
 		BCD3820120F49343003559C4 = {
 			isa = PBXGroup;
 			children = (
 				BCD3820C20F49343003559C4 /* IMDB Popular */,
+				BC88D8F120F4D62000E9E763 /* IMDB PopularTests */,
 				BCD3820B20F49343003559C4 /* Products */,
 				2BB706B17C07230D97B48D2B /* Pods */,
 				8DBB6BFD99B46C3CFC254764 /* Frameworks */,
@@ -85,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				BCD3820A20F49343003559C4 /* IMDB Popular.app */,
+				BC88D8F020F4D62000E9E763 /* IMDB PopularTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,7 +159,7 @@
 		BCD3822A20F499FB003559C4 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				BCD3822B20F49A2B003559C4 /* Movies.swift */,
+				BC88D8FC20F4D6D800E9E763 /* MovieService.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -144,6 +176,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BC88D8EF20F4D62000E9E763 /* IMDB PopularTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC88D8F920F4D62000E9E763 /* Build configuration list for PBXNativeTarget "IMDB PopularTests" */;
+			buildPhases = (
+				BC88D8EC20F4D62000E9E763 /* Sources */,
+				BC88D8ED20F4D62000E9E763 /* Frameworks */,
+				BC88D8EE20F4D62000E9E763 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC88D8F620F4D62000E9E763 /* PBXTargetDependency */,
+			);
+			name = "IMDB PopularTests";
+			productName = "IMDB PopularTests";
+			productReference = BC88D8F020F4D62000E9E763 /* IMDB PopularTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BCD3820920F49343003559C4 /* IMDB Popular */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCD3821C20F49344003559C4 /* Build configuration list for PBXNativeTarget "IMDB Popular" */;
@@ -174,6 +224,10 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Bananaland;
 				TargetAttributes = {
+					BC88D8EF20F4D62000E9E763 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = BCD3820920F49343003559C4;
+					};
 					BCD3820920F49343003559C4 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -193,11 +247,19 @@
 			projectRoot = "";
 			targets = (
 				BCD3820920F49343003559C4 /* IMDB Popular */,
+				BC88D8EF20F4D62000E9E763 /* IMDB PopularTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BC88D8EE20F4D62000E9E763 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCD3820820F49343003559C4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,23 +328,39 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BC88D8EC20F4D62000E9E763 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC88D8FF20F4D70300E9E763 /* MovieServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCD3820620F49343003559C4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD3822C20F49A2B003559C4 /* Movies.swift in Sources */,
 				BCD3821020F49343003559C4 /* ViewController.swift in Sources */,
 				BCD3822220F498F0003559C4 /* Request.swift in Sources */,
 				BC88D8EB20F4D09B00E9E763 /* MovieDetail.swift in Sources */,
 				BCD3822520F4998C003559C4 /* ErrorType.swift in Sources */,
 				BCD3822F20F49A7E003559C4 /* MovieModel.swift in Sources */,
 				BCD3822820F499C4003559C4 /* Alert.swift in Sources */,
+				BC88D8FD20F4D6D900E9E763 /* MovieService.swift in Sources */,
 				BCD3820E20F49343003559C4 /* AppDelegate.swift in Sources */,
 				BCD3822920F499C4003559C4 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC88D8F620F4D62000E9E763 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCD3820920F49343003559C4 /* IMDB Popular */;
+			targetProxy = BC88D8F520F4D62000E9E763 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCD3821120F49343003559C4 /* Main.storyboard */ = {
@@ -304,6 +382,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BC88D8F720F4D62000E9E763 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XY9H4LH9U8;
+				INFOPLIST_FILE = "IMDB PopularTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bananaland.IMDB-PopularTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IMDB Popular.app/IMDB Popular";
+			};
+			name = Debug;
+		};
+		BC88D8F820F4D62000E9E763 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XY9H4LH9U8;
+				INFOPLIST_FILE = "IMDB PopularTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bananaland.IMDB-PopularTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IMDB Popular.app/IMDB Popular";
+			};
+			name = Release;
+		};
 		BCD3821A20F49344003559C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -461,6 +579,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BC88D8F920F4D62000E9E763 /* Build configuration list for PBXNativeTarget "IMDB PopularTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC88D8F720F4D62000E9E763 /* Debug */,
+				BC88D8F820F4D62000E9E763 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BCD3820520F49343003559C4 /* Build configuration list for PBXProject "IMDB Popular" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
