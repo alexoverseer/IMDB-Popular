@@ -6,5 +6,6 @@ target 'IMDB Popular' do
 
   pod 'Alamofire'
   pod 'Reusable'
+  pod 'SwiftLint'
 
 end
