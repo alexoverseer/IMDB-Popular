@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movie List View Controller-->
+        <scene sceneID="BPj-yo-SLM">
+            <objects>
+                <viewController storyboardIdentifier="MovieListViewController" id="-1" customClass="MovieListViewController" customModule="IMDB_Popular" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5I8-xo-beR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h0w-zd-aau">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-1" id="8dE-XJ-m61"/>
+                                    <outlet property="delegate" destination="-1" id="pgd-BX-EJY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nDw-BS-KBh" firstAttribute="trailing" secondItem="h0w-zd-aau" secondAttribute="trailing" id="6lQ-Xg-Gur"/>
+                            <constraint firstItem="h0w-zd-aau" firstAttribute="top" secondItem="nDw-BS-KBh" secondAttribute="top" id="Owt-uu-i3C"/>
+                            <constraint firstItem="nDw-BS-KBh" firstAttribute="bottom" secondItem="h0w-zd-aau" secondAttribute="bottom" id="fAs-ip-FqQ"/>
+                            <constraint firstItem="h0w-zd-aau" firstAttribute="leading" secondItem="nDw-BS-KBh" secondAttribute="leading" id="u9K-KA-UIT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nDw-BS-KBh"/>
+                    </view>
+                    <connections>
+                        <outlet property="moviesTableView" destination="h0w-zd-aau" id="kIy-gG-woi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfb-i3-tBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-33" y="141"/>
+        </scene>
+    </scenes>
+</document>
