@@ -1,4 +1,4 @@
-# IMDB Popular Mobies App (VIPER Architecture)
+# IMDB Popular Movies App (VIPER Architecture)
 
 * App contains 2 screens (Main Screen and Details Screen)
 * Main Screen: Show all popular movies from IMDB

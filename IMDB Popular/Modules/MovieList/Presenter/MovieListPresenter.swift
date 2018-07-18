@@ -23,7 +23,10 @@ final class MovieListPresenter {
 // MARK: - MovieListModuleInput
 
 extension MovieListPresenter: MovieListModuleInput {
-	
+    
+    func onPopController(someData date: String) {
+        print("onPopController: " + date)
+    }
 }
 
 // MARK: - MovieListViewOutput
@@ -56,6 +59,10 @@ extension MovieListPresenter: MovieListViewOutput {
         view.isLoadingMovies(loading: true)
         loadingNewMovies = true
         interactor.requestMoviesList(for: currentPage)
+    }
+    
+    func openMovieDetails(index indexPath: IndexPath) {
+        router.showMovieDetailScreen(from: view, for: cellViewModels[indexPath.row])
     }
 }
 

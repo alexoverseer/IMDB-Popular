@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 final class MovieListViewController: UIViewController, StoryboardInstantiable {
 	static var storyboardName: String = "MovieListViewController"
@@ -47,14 +48,16 @@ extension MovieListViewController: MovieListViewInput {
     func setupInitialState() {
         self.title = "IMDB Popular"
         
-        moviesTableView?.tableFooterView = UIView()
         moviesTableView?.register(cellType: MovieTableViewCell.self)
+        moviesTableView?.tableFooterView = tableFooterSpiner
         
         if #available(iOS 10.0, *) {
             moviesTableView?.refreshControl = moviesRefreshControll
         } else {
             moviesTableView?.addSubview(moviesRefreshControll)
         }
+        
+        KingfisherManager.shared.cache.maxMemoryCost = 1
     }
     
     func updateMoviesList() {
@@ -76,6 +79,9 @@ extension MovieListViewController: MovieListViewInput {
     
     func showError(_ errorMessage: String) {
         DispatchQueue.main.async {
+            
+            self.moviesTableView.tableFooterView?.isHidden = true
+            
             let okAction = AlertAction(onSelect: {}, name: "OK", style: .default)
             let alert = UIAlertController(info: AlertInfo(title: "Error", message: errorMessage, actions: [okAction]))
             self.present(alert, animated: true)
@@ -108,6 +114,7 @@ extension MovieListViewController: UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        output.openMovieDetails(index: indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -116,9 +123,12 @@ extension MovieListViewController: UITableViewDelegate {
         let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
         
         if (indexPath.section == lastSectionIndex) && (indexPath.row == lastRowIndex) {
-            tableView.tableFooterView = tableFooterSpiner
             tableView.tableFooterView?.isHidden = false
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as? MovieTableViewCell)!.movieImageView?.kf.cancelDownloadTask()
     }
 }
 

@@ -7,4 +7,5 @@ protocol MovieListViewOutput {
     func cellViewModel(index indexPath: IndexPath) -> MovieModel
     func isLoadingNewMovies() -> Bool
     func resetMovies()
+    func openMovieDetails(index indexPath: IndexPath)
 }
