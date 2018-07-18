@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupWindow() {
         let controller = MovieListViewController.instantiate()
         let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.setOnLargeTitle()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

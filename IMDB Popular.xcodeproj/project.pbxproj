@@ -17,6 +17,7 @@
 		9557045BCD9DEE8FC06A1D9B /* MovieListViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E2289ECA28B0C26181626 /* MovieListViewOutput.swift */; };
 		AF26FC4B3B0330BDD56FA058 /* MovieListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F495787C0397CB5350BC17 /* MovieListInteractor.swift */; };
 		B3E72F8A02ADDDDB04EE0FC3 /* MovieListInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0113F0C55A1A98A7AEB775 /* MovieListInteractorInput.swift */; };
+		BC4C563C20FF122C001EFB74 /* UINavigationController+Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4C563B20FF122C001EFB74 /* UINavigationController+Titles.swift */; };
 		BC589F9820FE0A2600C2FB16 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC589F9720FE0A2600C2FB16 /* StoryboardInstantiable.swift */; };
 		BC589F9C20FE3C1E00C2FB16 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC589F9A20FE3C1E00C2FB16 /* MovieTableViewCell.swift */; };
 		BC589F9D20FE3C1E00C2FB16 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC589F9B20FE3C1E00C2FB16 /* MovieTableViewCell.xib */; };
@@ -59,6 +60,7 @@
 		8ED9BD2F33AA75330825E35A /* MovieListModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MovieListModuleInput.swift; sourceTree = "<group>"; };
 		95031927C12121E6B02D858D /* MovieListViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = MovieListViewController.storyboard; sourceTree = "<group>"; };
 		A476B90EB20073139BFC443B /* Pods-IMDB Popular.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMDB Popular.release.xcconfig"; path = "Pods/Target Support Files/Pods-IMDB Popular/Pods-IMDB Popular.release.xcconfig"; sourceTree = "<group>"; };
+		BC4C563B20FF122C001EFB74 /* UINavigationController+Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Titles.swift"; sourceTree = "<group>"; };
 		BC589F9720FE0A2600C2FB16 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		BC589F9A20FE3C1E00C2FB16 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		BC589F9B20FE3C1E00C2FB16 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
@@ -146,6 +148,14 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		BC4C563A20FF11CE001EFB74 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BC4C563B20FF122C001EFB74 /* UINavigationController+Titles.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		BC589F9620FE0A1600C2FB16 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +208,7 @@
 				BCD3820D20F49343003559C4 /* AppDelegate.swift */,
 				BCD3822320F49936003559C4 /* Utilities */,
 				BC589F9620FE0A1600C2FB16 /* Protocols */,
+				BC4C563A20FF11CE001EFB74 /* Extensions */,
 				BCD3822020F498C5003559C4 /* Networking */,
 				BCD3822D20F49A6A003559C4 /* Models */,
 				BC2D70F420F5F72300C9A02D /* Modules */,
@@ -466,6 +477,7 @@
 				BC88D8FD20F4D6D900E9E763 /* MovieService.swift in Sources */,
 				BCD3820E20F49343003559C4 /* AppDelegate.swift in Sources */,
 				BCD3822920F499C4003559C4 /* Utils.swift in Sources */,
+				BC4C563C20FF122C001EFB74 /* UINavigationController+Titles.swift in Sources */,
 				87B339B8045AE25F07B97B78 /* MovieListViewInput.swift in Sources */,
 				9557045BCD9DEE8FC06A1D9B /* MovieListViewOutput.swift in Sources */,
 				4C12C33FE841A621367D64EB /* MovieListViewController.swift in Sources */,
@@ -657,7 +669,7 @@
 				INFOPLIST_FILE = "IMDB Popular/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bananaland.IMDB-Popular";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bananaland.mvvmdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -674,7 +686,7 @@
 				INFOPLIST_FILE = "IMDB Popular/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bananaland.IMDB-Popular";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bananaland.mvvmdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

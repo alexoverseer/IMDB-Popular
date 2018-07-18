@@ -19,10 +19,10 @@ struct MovieModel: Codable {
     let voteAverage: Double
     let title: String
     let popularity: Double
-    let posterPath: String
+    let posterPath: String?
     let originalTitle: String
     let genreIDS: [Int]
-    let backdropPath: String
+    let backdropPath: String?
     let adult: Bool
     let overview, releaseDate: String
     
