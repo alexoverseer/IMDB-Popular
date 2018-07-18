@@ -10,9 +10,12 @@ final class MovieListPresenter {
     
     fileprivate var currentPage: Int = 1
     fileprivate var totalPages: Int = 1
+    fileprivate var loadingNewMovies: Bool = false
     
     func viewIsReady() {
         view.setupInitialState()
+        view.isLoadingMovies(loading: true)
+        loadingNewMovies = true
         interactor.requestMoviesList(for: currentPage)
     }
 }
@@ -26,6 +29,10 @@ extension MovieListPresenter: MovieListModuleInput {
 // MARK: - MovieListViewOutput
 
 extension MovieListPresenter: MovieListViewOutput {
+    
+    func isLoadingNewMovies() -> Bool {
+        return loadingNewMovies
+    }
     
     func getNextMovies() {
         if currentPage < totalPages {
@@ -41,6 +48,15 @@ extension MovieListPresenter: MovieListViewOutput {
     func cellViewModel(index indexPath: IndexPath) -> MovieModel {
         return cellViewModels[indexPath.row]
     }
+    
+    func resetMovies() {
+        cellViewModels.removeAll()
+        currentPage = 1
+        view.updateMoviesList()
+        view.isLoadingMovies(loading: true)
+        loadingNewMovies = true
+        interactor.requestMoviesList(for: currentPage)
+    }
 }
 
 // MARK: - MovieListInteractorOutput
@@ -53,11 +69,15 @@ extension MovieListPresenter: MovieListInteractorOutput {
     }
     
     func didRetrieveMovies(_ movies: [MovieModel]) {
+        loadingNewMovies = false
+        view.isLoadingMovies(loading: false)
         cellViewModels += movies
         view.updateMoviesList()
     }
     
     func onError(_ error: ErrorType) {
+        loadingNewMovies = false
+        view.isLoadingMovies(loading: false)
         view.showError(error.message)
     }
 }

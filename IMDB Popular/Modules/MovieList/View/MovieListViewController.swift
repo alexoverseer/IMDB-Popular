@@ -7,7 +7,23 @@ final class MovieListViewController: UIViewController, StoryboardInstantiable {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var moviesTableView: UITableView!
+    @IBOutlet private weak var moviesTableView: UITableView!
+    @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
+    
+    fileprivate lazy var tableFooterSpiner: UIActivityIndicatorView = {
+        var spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: 0, y: 0, width: moviesTableView.bounds.size.width, height: 50)
+        
+        return spinner
+    }()
+    
+    fileprivate lazy var moviesRefreshControll: UIRefreshControl = {
+        let refreshControll = UIRefreshControl()
+        refreshControll.addTarget(self, action: #selector(MovieListViewController.refreshMovies), for: .valueChanged)
+        
+        return refreshControll
+    }()
     
     // MARK: - Life cycle
     
@@ -16,6 +32,12 @@ final class MovieListViewController: UIViewController, StoryboardInstantiable {
         
         output.viewIsReady()
     }
+    
+    // MARK: - Functional
+    
+    @objc func refreshMovies() {
+        output.resetMovies()
+    }
 }
 
 // MARK: - MovieListViewInput
@@ -23,14 +45,32 @@ final class MovieListViewController: UIViewController, StoryboardInstantiable {
 extension MovieListViewController: MovieListViewInput {
     
     func setupInitialState() {
+        self.title = "IMDB Popular"
+        
         moviesTableView?.tableFooterView = UIView()
         moviesTableView?.register(cellType: MovieTableViewCell.self)
-        self.title = "IMDB Popular"
+        
+        if #available(iOS 10.0, *) {
+            moviesTableView?.refreshControl = moviesRefreshControll
+        } else {
+            moviesTableView?.addSubview(moviesRefreshControll)
+        }
     }
     
     func updateMoviesList() {
         DispatchQueue.main.async {
             self.moviesTableView?.reloadData()
+        }
+    }
+    
+    func isLoadingMovies(loading status: Bool) {
+        DispatchQueue.main.async {
+            if status {
+                self.loadingIndicator.startAnimating()
+            } else {
+                self.loadingIndicator.stopAnimating()
+                self.moviesRefreshControll.endRefreshing()
+            }
         }
     }
     
@@ -69,6 +109,17 @@ extension MovieListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let lastSectionIndex = tableView.numberOfSections - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
+        
+        if (indexPath.section == lastSectionIndex) && (indexPath.row == lastRowIndex) {
+            tableView.tableFooterView = tableFooterSpiner
+            tableView.tableFooterView?.isHidden = false
+        }
+    }
 }
 
 // MARK: - UIScrollViewDelegate
@@ -79,7 +130,9 @@ extension MovieListViewController: UIScrollViewDelegate {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         if (maximumOffset - currentOffset) <= 100 && (currentOffset > 0) {
-            print("DOWNLOAD 1111")
+            if !output.isLoadingNewMovies() {
+                output.getNextMovies()
+            }
         }
     }
 }
