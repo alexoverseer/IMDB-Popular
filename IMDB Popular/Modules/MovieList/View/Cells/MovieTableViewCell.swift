@@ -4,15 +4,34 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell, NibReusable {
     
-    @IBOutlet private weak var movieImageView: UIImageView!
+    @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet private weak var movieTitleLabel: UILabel!
     @IBOutlet private weak var movieYearLabel: UILabel!
     @IBOutlet private weak var movieRatingLabel: UILabel!
+    @IBOutlet weak var movieDescriptionLabel: UILabel!
+    @IBOutlet weak var shadowView: UIView! {
+        didSet {
+            shadowView.addShadow()
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        UIView.animate(withDuration: 0.2) {
+            if highlighted {
+                self.movieTitleLabel.textColor = UIColor.appOrange
+            } else {
+                self.movieTitleLabel.textColor = UIColor.black
+            }
+        }
+    }
     
     func setupCell(withModel model: MovieModel) {
         movieTitleLabel.text = model.title
         movieYearLabel.text = "Year: \(model.releaseDate)"
         movieRatingLabel.text = "Rating: \(model.voteAverage)"
+        movieDescriptionLabel.text = model.overview
         guard let posterPath = model.posterPath else { return }
         loadPosterImage(posterPath: "https://image.tmdb.org/t/p/w200\(posterPath)")
     }
