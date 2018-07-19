@@ -39,6 +39,7 @@ extension MovieListPresenter: MovieListViewOutput {
     
     func getNextMovies() {
         if currentPage < totalPages {
+            loadingNewMovies = true
             currentPage += 1
             interactor.requestMoviesList(for: currentPage)
         }
@@ -76,10 +77,10 @@ extension MovieListPresenter: MovieListInteractorOutput {
     }
     
     func didRetrieveMovies(_ movies: [MovieModel]) {
-        loadingNewMovies = false
         view.isLoadingMovies(loading: false)
         cellViewModels += movies
         view.updateMoviesList()
+        self.loadingNewMovies = false
     }
     
     func onError(_ error: ErrorType) {

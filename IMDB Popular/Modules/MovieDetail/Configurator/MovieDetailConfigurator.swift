@@ -2,7 +2,7 @@ import UIKit
 
 final class MovieDetailModuleConfigurator: NSObject {
 
-    @objc func configureModule(for viewController: MovieDetailViewController) {
+    func configureModule(for viewController: MovieDetailViewController) {
         configure(viewController: viewController)
     }
 

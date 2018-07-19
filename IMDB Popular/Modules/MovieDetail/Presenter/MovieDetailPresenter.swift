@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 final class MovieDetailPresenter {
 
@@ -7,9 +7,12 @@ final class MovieDetailPresenter {
     var router: MovieDetailRouterInput!
     
     var movie: MovieModel?
+    var movieDetails: MovieDetailModel?
     
     func viewIsReady() {
-        
+        if let movie = movie {
+            interactor.requestMovieDetails(for: movie)
+        }
         view.setupInitialState()
     }
 }
@@ -35,5 +38,25 @@ extension MovieDetailPresenter: MovieDetailViewOutput {
 // MARK: - MovieDetailInteractorOutput
 
 extension MovieDetailPresenter: MovieDetailInteractorOutput {
-	
+    
+    func didRetrieveMovieCover(cover movieCover: UIImage) {
+        view.didGetCoverImage(movieCover)
+    }
+    
+    func didRetrieveMoviePoster(poster moviePoster: UIImage) {
+        view.didGetPosterImage(moviePoster)
+    }
+    
+    func didRetrieveMovieDetails(_ movieDetails: MovieDetailModel) {
+        self.movieDetails = movieDetails
+        view.setupMovieDetails(self.movieDetails)
+        view.isLoadingMovieDetail(loading: false)
+        interactor.requestMoviePoster(for: self.movieDetails)
+        interactor.requestMoviePosterThumbnail(for: self.movieDetails)
+    }
+    
+    func onError(_ error: ErrorType) {
+        view.showError(error.message)
+        view.isLoadingMovieDetail(loading: false)
+    }
 }
