@@ -137,11 +137,12 @@ extension MovieListViewController: UITableViewDelegate {
 extension MovieListViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         if (maximumOffset - currentOffset) <= 100 && (currentOffset > 0) {
             if !output.isLoadingNewMovies() {
-                output.getNextMovies()
+                self.output.getNextMovies()
             }
         }
     }

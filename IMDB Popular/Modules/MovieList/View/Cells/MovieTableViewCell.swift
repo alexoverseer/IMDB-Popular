@@ -33,14 +33,14 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
         movieRatingLabel.text = "Rating: \(model.voteAverage)"
         movieDescriptionLabel.text = model.overview
         guard let posterPath = model.posterPath else { return }
-        loadPosterImage(posterPath: "https://image.tmdb.org/t/p/w200\(posterPath)")
+        loadPosterImage(posterPath: posterPath.getImageURL(quality: .low))
     }
     
     private func loadPosterImage(posterPath: String) {
         movieImageView?.kf.indicatorType = .activity
         movieImageView?.kf.setImage(with: URL(string: posterPath),
                                     placeholder: #imageLiteral(resourceName: "MoviePlaceHolder"),
-                                    options: [.transition(ImageTransition.fade(1))],
+                                    options: [.transition(ImageTransition.fade(0.5))],
                                     progressBlock: nil,
                                     completionHandler: nil)
     }

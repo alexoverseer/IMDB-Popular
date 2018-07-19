@@ -13,8 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupWindow() {
         let controller = MovieListViewController.instantiate()
+        MovieListModuleConfigurator().configureModule(for: controller)
         let navigationController = UINavigationController(rootViewController: controller)
         navigationController.setOnLargeTitle()
+        navigationController.setAppearance()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         window?.rootViewController = navigationController
