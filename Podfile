@@ -7,5 +7,7 @@ target 'IMDB Popular' do
   pod 'Alamofire'
   pod 'Reusable'
   pod 'SwiftLint'
+  pod 'Kingfisher'
+  pod 'ParallaxHeader'
 
 end
