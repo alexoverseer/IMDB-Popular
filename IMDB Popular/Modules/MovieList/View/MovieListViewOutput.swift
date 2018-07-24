@@ -8,4 +8,5 @@ protocol MovieListViewOutput {
     func isLoadingNewMovies() -> Bool
     func resetMovies()
     func openMovieDetails(index indexPath: IndexPath)
+    func getNumberOfItemsBeforeRequest() -> Int
 }

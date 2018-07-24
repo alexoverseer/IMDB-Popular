@@ -9,5 +9,6 @@ target 'IMDB Popular' do
   pod 'SwiftLint'
   pod 'Kingfisher'
   pod 'ParallaxHeader'
+  pod 'TableFlip'
 
 end

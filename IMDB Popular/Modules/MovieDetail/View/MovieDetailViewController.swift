@@ -8,7 +8,7 @@ final class MovieDetailViewController: UIViewController, StoryboardInstantiable 
     
     // MARK: - Outlets
     
-    @IBOutlet fileprivate weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet fileprivate weak var loadingView: UIView!
     @IBOutlet fileprivate weak var movieTitleLabel: UILabel!
     @IBOutlet fileprivate weak var movieRatingLabel: UILabel!
     @IBOutlet fileprivate weak var movieDurationLabel: UILabel!
@@ -18,13 +18,13 @@ final class MovieDetailViewController: UIViewController, StoryboardInstantiable 
     @IBOutlet fileprivate weak var movieGenresLabel: UILabel!
     @IBOutlet fileprivate weak var movieRevenueLabel: UILabel!
     @IBOutlet fileprivate weak var movieProductionCompaniesLabel: UILabel!
-    @IBOutlet weak var moviePosterImageView: UIImageView!
+    @IBOutlet fileprivate weak var moviePosterImageView: UIImageView!
     @IBOutlet private weak var movieDetailsScrollView: UIScrollView! {
         didSet {
             movieDetailsScrollView.parallaxHeader.view = UIView()
-            movieDetailsScrollView.parallaxHeader.height = 200
             movieDetailsScrollView.parallaxHeader.minimumHeight = 0
             movieDetailsScrollView.parallaxHeader.mode = .topFill
+            movieDetailsScrollView.parallaxHeader.height = isPad ? 500 : 200
         }
     }
     
@@ -43,6 +43,10 @@ final class MovieDetailViewController: UIViewController, StoryboardInstantiable 
             output.isClosingCurrentController()
         }
     }
+    
+    fileprivate func minutesToHoursMinutes(minutes: Int) -> (hours: Int, leftMinutes: Int) {
+        return (minutes / 60, (minutes % 60))
+    }
 }
 
 // MARK: - MovieDetailViewInput
@@ -51,6 +55,7 @@ extension MovieDetailViewController: MovieDetailViewInput {
     
     func setupInitialState() {
         self.title = "Details"
+        self.view.addSubview(loadingView)
     }
     
     func didGetCoverImage(_ coverImage: UIImage) {
@@ -81,11 +86,9 @@ extension MovieDetailViewController: MovieDetailViewInput {
     
     func isLoadingMovieDetail(loading status: Bool) {
         DispatchQueue.main.async {
-            if status {
-                self.loadingIndicator.startAnimating()
-            } else {
-                self.loadingIndicator.stopAnimating()
-            }
+            UIView.animate(withDuration: 0.3, animations: {
+                self.loadingView.alpha = status ? 1 : 0
+            })
         }
     }
     
@@ -94,13 +97,18 @@ extension MovieDetailViewController: MovieDetailViewInput {
         DispatchQueue.main.async {
             self.movieTitleLabel.text = movieDetails.title
             self.movieRatingLabel.text = String(format: "%.1f", movieDetails.voteAverage)
-            self.movieDurationLabel.text = "\(movieDetails.runtime) minutes"
             self.movieBudgetLabel.text = "$ \(movieDetails.budget.withCommas())"
             self.movieReleaseDateLabel.text = movieDetails.releaseDate
             self.movieOverviewLabel.text = movieDetails.overview
             self.movieRevenueLabel.text = "$ \(movieDetails.revenue.withCommas())"
             self.movieGenresLabel.text = movieDetails.genres.map {$0.name}.joined(separator: ", ")
             self.movieProductionCompaniesLabel.text = movieDetails.productionCompanies.map {$0.name}.joined(separator: "\n")
+            if let minutes = movieDetails.runtime {
+                let formatedTime = self.minutesToHoursMinutes(minutes: minutes)
+                self.movieDurationLabel.text = "\(formatedTime.hours):\(formatedTime.leftMinutes) h"
+            } else {
+                self.movieDurationLabel.text = "unavailable"
+            }
         }
     }
 }

@@ -14,7 +14,8 @@ struct MovieDetailModel: Codable {
     let productionCompanies: [ProductionCompany]
     let productionCountries: [ProductionCountry]
     let releaseDate: String
-    let revenue, runtime: Int
+    let runtime: Int?
+    let revenue: Int
     let spokenLanguages: [SpokenLanguage]
     let status, tagline, title: String
     let video: Bool
@@ -35,7 +36,7 @@ struct MovieDetailModel: Codable {
         case productionCompanies = "production_companies"
         case productionCountries = "production_countries"
         case releaseDate = "release_date"
-        case revenue, runtime
+        case runtime, revenue 
         case spokenLanguages = "spoken_languages"
         case status, tagline, title, video
         case voteAverage = "vote_average"
