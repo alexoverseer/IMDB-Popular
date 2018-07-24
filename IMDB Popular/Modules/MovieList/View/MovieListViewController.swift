@@ -1,5 +1,6 @@
 import UIKit
 import Kingfisher
+import TableFlip
 
 final class MovieListViewController: UIViewController, StoryboardInstantiable {
 	static var storyboardName: String = "MovieListViewController"
@@ -63,6 +64,7 @@ extension MovieListViewController: MovieListViewInput {
     func updateMoviesList() {
         DispatchQueue.main.async {
             self.moviesTableView?.reloadData()
+            self.moviesTableView?.animate(animation: .fade(duration: 0.1))
         }
     }
     
@@ -72,7 +74,9 @@ extension MovieListViewController: MovieListViewInput {
                 self.loadingIndicator.startAnimating()
             } else {
                 self.loadingIndicator.stopAnimating()
-                self.moviesRefreshControll.endRefreshing()
+                if self.moviesRefreshControll.isRefreshing {
+                    self.moviesRefreshControll.endRefreshing()
+                }
             }
         }
     }
@@ -125,25 +129,15 @@ extension MovieListViewController: UITableViewDelegate {
         if (indexPath.section == lastSectionIndex) && (indexPath.row == lastRowIndex) {
             tableView.tableFooterView?.isHidden = false
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        (cell as? MovieTableViewCell)!.movieImageView?.kf.cancelDownloadTask()
-    }
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension MovieListViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let currentOffset = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        if (maximumOffset - currentOffset) <= 100 && (currentOffset > 0) {
+        if indexPath.row == output.numberOfCells() - 1 {
             if !output.isLoadingNewMovies() {
                 self.output.getNextMovies()
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as? MovieTableViewCell)!.movieImageView?.kf.cancelDownloadTask()
     }
 }
