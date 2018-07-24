@@ -11,6 +11,6 @@ extension UIColor {
     }
     
     static var appOrange: UIColor {
-        return UIColor(red: 240, green: 155, blue: 44)
+        return UIColor(red: 245, green: 197, blue: 24)
     }
 }

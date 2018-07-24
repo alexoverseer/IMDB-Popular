@@ -10,6 +10,7 @@ final class MovieListPresenter {
     
     fileprivate var currentPage: Int = 1
     fileprivate var totalPages: Int = 1
+    fileprivate var itemsBeforeRequest: Int = 0
     fileprivate var loadingNewMovies: Bool = false
     
     func viewIsReady() {
@@ -33,6 +34,10 @@ extension MovieListPresenter: MovieListModuleInput {
 
 extension MovieListPresenter: MovieListViewOutput {
     
+    func getNumberOfItemsBeforeRequest() -> Int {
+        return self.itemsBeforeRequest
+    }
+    
     func isLoadingNewMovies() -> Bool {
         return loadingNewMovies
     }
@@ -41,6 +46,7 @@ extension MovieListPresenter: MovieListViewOutput {
         if currentPage < totalPages {
             loadingNewMovies = true
             currentPage += 1
+            itemsBeforeRequest = cellViewModels.count
             interactor.requestMoviesList(for: currentPage)
         }
     }
