@@ -430,7 +430,7 @@
 				BCD3820720F49343003559C4 /* Frameworks */,
 				BCD3820820F49343003559C4 /* Resources */,
 				64C49D5167EA74ECBFB7E23C /* [CP] Embed Pods Frameworks */,
-				BCD3821F20F49812003559C4 /* Run Script - SwiftLint */,
+				BCD3821F20F49812003559C4 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -453,11 +453,13 @@
 				TargetAttributes = {
 					BC88D8EF20F4D62000E9E763 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = BCD3820920F49343003559C4;
 					};
 					BCD3820920F49343003559C4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -510,7 +512,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-IMDB Popular/Pods-IMDB Popular-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-IMDB Popular/Pods-IMDB Popular-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ParallaxHeader/ParallaxHeader.framework",
@@ -527,22 +529,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IMDB Popular/Pods-IMDB Popular-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IMDB Popular/Pods-IMDB Popular-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BCD3821F20F49812003559C4 /* Run Script - SwiftLint */ = {
+		BCD3821F20F49812003559C4 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script - SwiftLint";
+			name = SwiftLint;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		E65206F8E30A9B594477ECB8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -799,7 +801,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bananaland.mvvmdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -816,7 +818,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bananaland.mvvmdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
