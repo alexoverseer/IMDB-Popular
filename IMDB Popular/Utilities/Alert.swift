@@ -16,11 +16,11 @@ struct AlertInfo {
 struct AlertAction {
     let onSelect: () -> Void
     let name: String
-    let style: UIAlertActionStyle
+    let style: UIAlertAction.Style
 }
 
 extension UIAlertController {
-    convenience init(info: AlertInfo, style: UIAlertControllerStyle = .alert) {
+    convenience init(info: AlertInfo, style: UIAlertController.Style = .alert) {
         self.init(title: info.title, message: info.message, preferredStyle: style)
         info.actions.forEach { actionInfo in
             let action = UIAlertAction(title: actionInfo.name, style: actionInfo.style, handler: { _ in

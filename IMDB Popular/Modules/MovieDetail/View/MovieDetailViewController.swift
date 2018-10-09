@@ -39,7 +39,7 @@ final class MovieDetailViewController: UIViewController, StoryboardInstantiable 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if self.isMovingFromParentViewController {
+        if self.isMovingFromParent {
             output.isClosingCurrentController()
         }
     }

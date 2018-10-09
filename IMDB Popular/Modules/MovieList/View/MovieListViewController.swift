@@ -13,7 +13,7 @@ final class MovieListViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
     
     fileprivate lazy var tableFooterSpiner: UIActivityIndicatorView = {
-        var spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        var spinner = UIActivityIndicatorView(style: .gray)
         spinner.startAnimating()
         spinner.frame = CGRect(x: 0, y: 0, width: moviesTableView.bounds.size.width, height: 50)
         
