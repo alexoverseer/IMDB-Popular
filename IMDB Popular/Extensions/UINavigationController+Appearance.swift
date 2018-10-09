@@ -6,7 +6,7 @@ extension UINavigationController {
         self.navigationBar.barTintColor = UIColor.appOrange
         self.navigationBar.tintColor = UIColor.black
         
-        let blackAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        let blackAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationBar.titleTextAttributes = blackAttributes
         if #available(iOS 11.0, *) {
             navigationBar.largeTitleTextAttributes = blackAttributes
