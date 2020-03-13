@@ -37,11 +37,17 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
     }
     
     private func loadPosterImage(posterPath: String) {
-        movieImageView?.kf.indicatorType = .activity
-        movieImageView?.kf.setImage(with: URL(string: posterPath),
-                                    placeholder: #imageLiteral(resourceName: "MoviePlaceHolder"),
-                                    options: [.transition(ImageTransition.fade(0.5))],
-                                    progressBlock: nil,
-                                    completionHandler: nil)
+        let url = URL(string: posterPath)
+        
+        movieImageView.kf.indicatorType = .activity
+        movieImageView.kf.setImage(
+            with: url,
+            placeholder: #imageLiteral(resourceName: "MoviePlaceHolder"),
+            options: [
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(0.5)),
+                .cacheOriginalImage
+            ]
+        )
     }
 }

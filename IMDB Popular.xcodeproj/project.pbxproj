@@ -309,12 +309,12 @@
 			isa = PBXGroup;
 			children = (
 				BCD3820D20F49343003559C4 /* AppDelegate.swift */,
-				BCD3822320F49936003559C4 /* Utilities */,
-				BC589F9620FE0A1600C2FB16 /* Protocols */,
-				BC4C563A20FF11CE001EFB74 /* Extensions */,
+				BC2D70F420F5F72300C9A02D /* Modules */,
 				BCD3822020F498C5003559C4 /* Networking */,
 				BCD3822D20F49A6A003559C4 /* Models */,
-				BC2D70F420F5F72300C9A02D /* Modules */,
+				BC589F9620FE0A1600C2FB16 /* Protocols */,
+				BCD3822320F49936003559C4 /* Utilities */,
+				BC4C563A20FF11CE001EFB74 /* Extensions */,
 				BCD3821420F49344003559C4 /* Assets.xcassets */,
 				BCD3821620F49344003559C4 /* LaunchScreen.storyboard */,
 				BCD3821920F49344003559C4 /* Info.plist */,
@@ -453,13 +453,13 @@
 				TargetAttributes = {
 					BC88D8EF20F4D62000E9E763 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						TestTargetID = BCD3820920F49343003559C4;
 					};
 					BCD3820920F49343003559C4 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -654,7 +654,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bananaland.IMDB-PopularTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IMDB Popular.app/IMDB Popular";
 			};
@@ -670,7 +670,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bananaland.IMDB-PopularTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IMDB Popular.app/IMDB Popular";
 			};
@@ -797,11 +797,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XY9H4LH9U8;
 				INFOPLIST_FILE = "IMDB Popular/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bananaland.mvvmdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -814,11 +814,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XY9H4LH9U8;
 				INFOPLIST_FILE = "IMDB Popular/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bananaland.mvvmdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
