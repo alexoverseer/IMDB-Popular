@@ -58,7 +58,7 @@ extension MovieListViewController: MovieListViewInput {
             moviesTableView?.addSubview(moviesRefreshControll)
         }
         
-        KingfisherManager.shared.cache.maxMemoryCost = 1
+        KingfisherManager.shared.cache.memoryStorage.config.totalCostLimit = 1
     }
     
     func updateMoviesList() {
