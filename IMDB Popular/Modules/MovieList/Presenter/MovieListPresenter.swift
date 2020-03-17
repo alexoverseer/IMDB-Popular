@@ -26,7 +26,7 @@ final class MovieListPresenter {
 extension MovieListPresenter: MovieListModuleInput {
     
     func onPopController(someData date: String) {
-        print("onPopController: " + date)
+        
     }
 }
 
