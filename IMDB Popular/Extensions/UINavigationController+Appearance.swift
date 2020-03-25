@@ -3,13 +3,10 @@ import UIKit
 extension UINavigationController {
     
     func setAppearance() {
-        self.navigationBar.barTintColor = UIColor.appOrange
-        self.navigationBar.tintColor = UIColor.black
+        self.navigationBar.tintColor = UIColor.appOrange
         
-        let blackAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        let blackAttributes = [NSAttributedString.Key.foregroundColor: UIColor.appBlack]
         navigationBar.titleTextAttributes = blackAttributes
-        if #available(iOS 11.0, *) {
-            navigationBar.largeTitleTextAttributes = blackAttributes
-        }
+        navigationBar.largeTitleTextAttributes = blackAttributes
     }
 }

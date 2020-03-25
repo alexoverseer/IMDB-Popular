@@ -43,8 +43,14 @@ struct ImageDownloadManager: ImageFetcher {
     private func fetchImageFromCache(with key: String,
                                      completion: @escaping (KFCrossPlatformImage?) -> Void) {
         
-        let image: KFCrossPlatformImage? = ImageCache.default.retrieveImageInMemoryCache(forKey: key)
-        completion(image)
+        ImageCache.default.retrieveImage(forKey: key) { result in
+            switch result {
+            case .success(let imageResult):
+                completion(imageResult.image)
+            case .failure:
+                completion(nil)
+            }
+        }
     }
     
     private func download(from imageUrl: String, completion: @escaping (KFCrossPlatformImage?) -> Void) {
