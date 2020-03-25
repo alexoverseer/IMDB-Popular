@@ -39,7 +39,7 @@ struct Request {
     init(inputs: RequestInputs, encoding: Encoding) {
         if !isReachable {
             inputs.onFailure(.connection)
-
+            
             return
         }
         guard let url = URL(string: TheMovieDBAPI.baseAPI) else {
@@ -53,25 +53,33 @@ struct Request {
         }
     }
     
-    private func stringRequest(with inputs: RequestInputs, url: URL) {        
-        Alamofire.request(url.appendingPathComponent(inputs.path),
-                          method: inputs.method,
-                          parameters: inputs.parameters).responseString(completionHandler: { (response) in
-                            switch response.result {
-                            case .success: inputs.onSuccess(response.value)
-                            case .failure: inputs.onFailure(.request(response.error))
-                            }
-                          })
+    private func stringRequest(with inputs: RequestInputs, url: URL) {
+        AF.request(
+            url.appendingPathComponent(inputs.path),
+            method: inputs.method,
+            parameters: inputs.parameters).responseString(completionHandler: { (response) in
+                switch response.result {
+                case .success:
+                    inputs.onSuccess(response.value)
+                case .failure:
+                    inputs.onFailure(.request(response.error))
+                }
+            }
+        )
     }
     
     private func jsonRequest(with inputs: RequestInputs, url: URL) {
-        Alamofire.request(url.appendingPathComponent(inputs.path),
-                          method: inputs.method,
-                          parameters: inputs.parameters).responseJSON(completionHandler: { response in
-                            switch response.result {
-                            case .success: inputs.onSuccess(response.value)
-                            case .failure: inputs.onFailure(.request(response.error))
-                            }
-                          })
+        AF.request(
+            url.appendingPathComponent(inputs.path),
+            method: inputs.method,
+            parameters: inputs.parameters).responseJSON(completionHandler: { response in
+                switch response.result {
+                case .success:
+                    inputs.onSuccess(response.value)
+                case .failure:
+                    inputs.onFailure(.request(response.error))
+                }
+            }
+        )
     }
 }

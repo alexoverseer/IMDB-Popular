@@ -9,11 +9,7 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
     @IBOutlet private weak var movieYearLabel: UILabel!
     @IBOutlet private weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieDescriptionLabel: UILabel!
-    @IBOutlet weak var shadowView: UIView! {
-        didSet {
-            shadowView.addShadow()
-        }
-    }
+    @IBOutlet weak var shadowView: UIView!
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
@@ -22,7 +18,11 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
             if highlighted {
                 self.movieTitleLabel.textColor = UIColor.appOrange
             } else {
-                self.movieTitleLabel.textColor = UIColor.black
+                if #available(iOS 13, *) {
+                    self.movieTitleLabel.textColor = UIColor.label
+                } else {
+                    self.movieTitleLabel.textColor = UIColor.black
+                }
             }
         }
     }
@@ -37,11 +37,17 @@ class MovieTableViewCell: UITableViewCell, NibReusable {
     }
     
     private func loadPosterImage(posterPath: String) {
-        movieImageView?.kf.indicatorType = .activity
-        movieImageView?.kf.setImage(with: URL(string: posterPath),
-                                    placeholder: #imageLiteral(resourceName: "MoviePlaceHolder"),
-                                    options: [.transition(ImageTransition.fade(0.5))],
-                                    progressBlock: nil,
-                                    completionHandler: nil)
+        let url = URL(string: posterPath)
+        
+        movieImageView.kf.indicatorType = .activity
+        movieImageView.kf.setImage(
+            with: url,
+            placeholder: #imageLiteral(resourceName: "MoviePlaceHolder"),
+            options: [
+//                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(0.5)),
+                .cacheOriginalImage
+            ]
+        )
     }
 }

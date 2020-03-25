@@ -1,7 +1,11 @@
 import Foundation
 import Kingfisher
 
-struct ImageDownloadManager {
+protocol ImageFetcher {
+    func fetchImage(with imageUrl: String, completion: @escaping (UIImage?) -> Void)
+}
+
+struct ImageDownloadManager: ImageFetcher {
     
     static let shared = ImageDownloadManager()
     
@@ -10,16 +14,16 @@ struct ImageDownloadManager {
     // MARK: - Public
     
     func fetchImage(with imageUrl: String, completion: @escaping (UIImage?) -> Void) {
-
+        
         if checkImageCache(with: imageUrl) {
-            fetchImageFromCache(with: imageUrl, completion: { (image: Image?) in
+            fetchImageFromCache(with: imageUrl, completion: { (image: KFCrossPlatformImage?) in
                 completion(image)
             })
             
             return
         }
         
-        download(from: imageUrl) { (image: Image?) in
+        download(from: imageUrl) { (image: KFCrossPlatformImage?) in
             if let image = image {
                 self.saveImageToDisk(with: image, key: imageUrl)
                 completion(image)
@@ -36,20 +40,35 @@ struct ImageDownloadManager {
         return ImageCache.default.imageCachedType(forKey: key).cached
     }
     
-    private func fetchImageFromCache(with key: String, completion: @escaping (Image?) -> Void) {
-        ImageCache.default.retrieveImage(forKey: key, options: nil) { image, _ in
-            completion(image)
+    private func fetchImageFromCache(with key: String,
+                                     completion: @escaping (KFCrossPlatformImage?) -> Void) {
+        
+        ImageCache.default.retrieveImage(forKey: key) { result in
+            switch result {
+            case .success(let imageResult):
+                completion(imageResult.image)
+            case .failure:
+                completion(nil)
+            }
         }
     }
     
-    private func download(from imageUrl: String, completion: @escaping (Image?) -> Void) {
-        ImageDownloader.default.downloadImage(with: URL(string: imageUrl)!, options: [], progressBlock: nil) { (image, _, _, _) in
-            completion(image)
+    private func download(from imageUrl: String, completion: @escaping (KFCrossPlatformImage?) -> Void) {
+        ImageDownloader.default.downloadImage(with: URL(string: imageUrl)!,
+                                              options: nil,
+                                              progressBlock: nil) { result in
+                                                
+                                                switch result {
+                                                case .success(let imageResult):
+                                                    completion(imageResult.image)
+                                                case .failure:
+                                                    completion(nil)
+                                                }
+                                                
         }
     }
     
-    private func saveImageToDisk(with image: Image, key: String) {
+    private func saveImageToDisk(with image: KFCrossPlatformImage, key: String) {
         ImageCache.default.store(image, forKey: key)
     }
-    
 }

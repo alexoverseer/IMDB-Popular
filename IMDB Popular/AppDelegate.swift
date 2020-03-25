@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.setOnLargeTitle()
         navigationController.setAppearance()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.white
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
